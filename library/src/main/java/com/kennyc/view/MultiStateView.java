@@ -230,7 +230,7 @@ public class MultiStateView extends FrameLayout {
             int previous = mViewState;
             mViewState = state;
             setView(previous);
-            if (mListener != null) mListener.onStateChanged(mViewState);
+            if (mListener != null) mListener.onStateChanged(previous, mViewState);
         }
     }
 
@@ -504,9 +504,10 @@ public class MultiStateView extends FrameLayout {
         /**
          * Callback for when the {@link ViewState} has changed
          *
-         * @param viewState The {@link ViewState} that was switched to
+         * @param oldState The old {@link ViewState}
+         * @param newState The {@link ViewState} that was switched to
          */
-        void onStateChanged(@ViewState int viewState);
+        void onStateChanged(@ViewState int oldState, @ViewState int newState);
 
         /**
          * Callback for when a {@link ViewState} has been inflated
